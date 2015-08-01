@@ -9505,7 +9505,7 @@
   this.d3 = d3;
 }();
 }).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/bower_components/d3/d3.js","/bower_components/d3")
-},{"1YiZ5S":12,"buffer":9}],2:[function(require,module,exports){
+},{"1YiZ5S":13,"buffer":10}],2:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 // vim:ts=4:sts=4:sw=4:
 /*!
@@ -11413,7 +11413,7 @@ return Q;
 });
 
 }).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/bower_components/q/q.js","/bower_components/q")
-},{"1YiZ5S":12,"buffer":9}],3:[function(require,module,exports){
+},{"1YiZ5S":13,"buffer":10}],3:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * React v0.13.3
@@ -31018,7 +31018,7 @@ module.exports = warning;
 },{"114":114}]},{},[1])(1)
 });
 }).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/bower_components/react/react.js","/bower_components/react")
-},{"1YiZ5S":12,"buffer":9}],4:[function(require,module,exports){
+},{"1YiZ5S":13,"buffer":10}],4:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -31059,7 +31059,8 @@ var IfeChart = React.createClass({
 				};
 
 				return React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-					style: chartStyleOne });
+					style: chartStyleOne,
+					chartDisplayId: "chart-display-1" });
 			case 1:
 				chartStyleOne = {
 					backgroundColor: 'hsl(192, 15%, 94%)',
@@ -31085,9 +31086,11 @@ var IfeChart = React.createClass({
 					'div',
 					{ style: { width: '100%', height: 'calc(100% - 50px)' } },
 					React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-						style: chartStyleOne }),
+						style: chartStyleOne,
+						chartDisplayId: "chart-display-1" }),
 					React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-						style: chartStyleTwo })
+						style: chartStyleTwo,
+						chartDisplayId: "chart-display-2" })
 				);
 			case 2:
 				chartStyleOne = {
@@ -31114,9 +31117,11 @@ var IfeChart = React.createClass({
 					'div',
 					{ style: { width: '100%', height: 'calc(100% - 50px)' } },
 					React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-						style: chartStyleOne }),
+						style: chartStyleOne,
+						chartDisplayId: "chart-display-1" }),
 					React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-						style: chartStyleTwo })
+						style: chartStyleTwo,
+						chartDisplayId: "chart-display-2" })
 				);
 			case 3:
 				chartStyleOne = {
@@ -31136,7 +31141,8 @@ var IfeChart = React.createClass({
 					display: 'inline-block',
 					width: '100%',
 					height: 'calc(50% - 5px)',
-					marginBottom: '5px'
+					marginBottom: '5px',
+					verticalAlign: 'top'
 				};
 				chartStyleThree = {
 					backgroundColor: 'hsl(192, 15%, 94%)',
@@ -31151,7 +31157,8 @@ var IfeChart = React.createClass({
 					'div',
 					{ style: { width: '100%', height: 'calc(100% - 50px)' } },
 					React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-						style: chartStyleOne }),
+						style: chartStyleOne,
+						chartDisplayId: "chart-display-1" }),
 					React.createElement(
 						'div',
 						{ style: {
@@ -31162,9 +31169,11 @@ var IfeChart = React.createClass({
 								position: 'relative'
 							} },
 						React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-							style: chartStyleTwo }),
+							style: chartStyleTwo,
+							chartDisplayId: "chart-display-2" }),
 						React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-							style: chartStyleThree })
+							style: chartStyleThree,
+							chartDisplayId: "chart-display-3" })
 					)
 				);
 			case 4:
@@ -31185,7 +31194,8 @@ var IfeChart = React.createClass({
 					display: 'inline-block',
 					width: 'calc(50% - 3px)',
 					height: '100%',
-					marginRight: '5px'
+					marginRight: '5px',
+					verticalAlign: 'top'
 				};
 				chartStyleThree = {
 					backgroundColor: 'hsl(192, 15%, 94%)',
@@ -31193,13 +31203,15 @@ var IfeChart = React.createClass({
 					boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
 					display: 'inline-block',
 					width: 'calc(50% - 3px)',
-					height: '100%'
+					height: '100%',
+					verticalAlign: 'top'
 				};
 				return React.createElement(
 					'div',
 					{ style: { width: '100%', height: 'calc(100% - 50px)' } },
 					React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-						style: chartStyleOne }),
+						style: chartStyleOne,
+						chartDisplayId: "chart-display-1" }),
 					React.createElement(
 						'div',
 						{ style: {
@@ -31210,9 +31222,11 @@ var IfeChart = React.createClass({
 								position: 'relative'
 							} },
 						React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-							style: chartStyleTwo }),
+							style: chartStyleTwo,
+							chartDisplayId: "chart-display-2" }),
 						React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-							style: chartStyleThree })
+							style: chartStyleThree,
+							chartDisplayId: "chart-display-3" })
 					)
 				);
 			case 5:
@@ -31257,12 +31271,15 @@ var IfeChart = React.createClass({
 								position: 'relative'
 							} },
 						React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-							style: chartStyleTwo }),
+							style: chartStyleTwo,
+							chartDisplayId: "chart-display-2" }),
 						React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-							style: chartStyleThree })
+							style: chartStyleThree,
+							chartDisplayId: "chart-display-3" })
 					),
 					React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-						style: chartStyleOne })
+						style: chartStyleOne,
+						chartDisplayId: "chart-display-1" })
 				);
 			case 6:
 				chartStyleOne = {
@@ -31272,19 +31289,24 @@ var IfeChart = React.createClass({
 					display: 'inline-block',
 					width: 'calc(50% - 8px)',
 					height: 'calc(50% - 10px)',
-					margin: '3px'
+					margin: '3px',
+					verticalAlign: 'top'
 				};
 				return React.createElement(
 					'div',
 					{ style: { width: '100%', height: 'calc(100% - 50px)' } },
 					React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-						style: chartStyleOne }),
+						style: chartStyleOne,
+						chartDisplayId: "chart-display-1" }),
 					React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-						style: chartStyleOne }),
+						style: chartStyleOne,
+						chartDisplayId: "chart-display-2" }),
 					React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-						style: chartStyleOne }),
+						style: chartStyleOne,
+						chartDisplayId: "chart-display-3" }),
 					React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-						style: chartStyleOne })
+						style: chartStyleOne,
+						chartDisplayId: "chart-display-4" })
 				);
 		}
 	},
@@ -31311,14 +31333,69 @@ var IfeChart = React.createClass({
 
 module.exports = IfeChart;
 }).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/components/IfeChart.js","/components")
-},{"../bower_components/react/react":3,"./IfeChartDisplay":5,"./IfeNav":6,"1YiZ5S":12,"buffer":9}],5:[function(require,module,exports){
+},{"../bower_components/react/react":3,"./IfeChartDisplay":5,"./IfeNav":6,"1YiZ5S":13,"buffer":10}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
 var React = require('../bower_components/react/react');
+var Chart = require('../services/Chart');
 
 var IfeChartDisplay = React.createClass({
 	displayName: 'IfeChartDisplay',
+
+	getInitialState: function getInitialState() {
+		return {
+			city: 'beijing',
+			chartType: 'line',
+			range: 'week',
+			valueType: 'peak'
+		};
+	},
+
+	handleLiClick: function handleLiClick(type, value) {
+		var state = {};
+		state[type] = value;
+		if (type === 'chartType' && value === 'pie') {
+			state.valueType = 'days';
+		}
+		this.setState(state);
+	},
+
+	componentDidMount: function componentDidMount() {
+		this.drawChart();
+	},
+
+	componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
+		this.drawChart();
+	},
+
+	drawChart: function drawChart() {
+		var data = this.props.aqiData;
+		var state = this.state;
+		var city = this.state.city;
+		var graphData;
+
+		switch (state.chartType) {
+			case "line":
+				Chart.drawLineChart(this.props.chartDisplayId, graphData);
+				break;
+			case "bar":
+				Chart.drawBarChart(this.props.chartDisplayId, graphData);
+				break;
+			case "pie":
+				var days = data.filter(function (aqi) {
+					return aqi[city] < 100;
+				}).length;
+				graphData = [{
+					days: days
+				}, {
+					days: 365 - days
+				}];
+				Chart.drawPieChart(this.props.chartDisplayId, graphData);
+				break;
+
+		}
+	},
 
 	render: function render() {
 		var filterStyle = {
@@ -31343,10 +31420,14 @@ var IfeChartDisplay = React.createClass({
 			cursor: 'pointer',
 			listStyle: 'none',
 			display: 'inline',
-			margin: '5px',
 			padding: '10px',
 			WebkitUserSelect: 'none',
 			userSelect: 'none'
+		};
+		var chartDisplayStyle = {
+			height: 'calc(100% - 100px)',
+			position: 'relative',
+			width: '100%;'
 		};
 
 		return React.createElement(
@@ -31368,17 +31449,23 @@ var IfeChartDisplay = React.createClass({
 						{ style: ulStyle },
 						React.createElement(
 							'li',
-							{ style: liStyle },
+							{ style: liStyle,
+								className: this.state.city === 'beijing' ? 'chart-filter-active' : '',
+								onClick: this.handleLiClick.bind(this, 'city', 'beijing') },
 							'Beijing'
 						),
 						React.createElement(
 							'li',
-							{ style: liStyle },
+							{ style: liStyle,
+								className: this.state.city === 'shanghai' ? 'chart-filter-active' : '',
+								onClick: this.handleLiClick.bind(this, 'city', 'shanghai') },
 							'Shanghai'
 						),
 						React.createElement(
 							'li',
-							{ style: liStyle },
+							{ style: liStyle,
+								className: this.state.city === 'guangzhou' ? 'chart-filter-active' : '',
+								onClick: this.handleLiClick.bind(this, 'city', 'guangzhou') },
 							'Guangzhou'
 						)
 					)
@@ -31396,17 +31483,23 @@ var IfeChartDisplay = React.createClass({
 						{ style: ulStyle },
 						React.createElement(
 							'li',
-							{ style: liStyle },
+							{ style: liStyle,
+								className: this.state.chartType === 'line' ? 'chart-filter-active' : '',
+								onClick: this.handleLiClick.bind(this, 'chartType', 'line') },
 							'Line'
 						),
 						React.createElement(
 							'li',
-							{ style: liStyle },
-							'Block'
+							{ style: liStyle,
+								className: this.state.chartType === 'bar' ? 'chart-filter-active' : '',
+								onClick: this.handleLiClick.bind(this, 'chartType', 'bar') },
+							'Bar'
 						),
 						React.createElement(
 							'li',
-							{ style: liStyle },
+							{ style: liStyle,
+								className: this.state.chartType === 'pie' ? 'chart-filter-active' : '',
+								onClick: this.handleLiClick.bind(this, 'chartType', 'pie') },
 							'Pie'
 						)
 					)
@@ -31428,17 +31521,23 @@ var IfeChartDisplay = React.createClass({
 						{ style: ulStyle },
 						React.createElement(
 							'li',
-							{ style: liStyle },
+							{ style: liStyle,
+								className: this.state.range === 'week' ? 'chart-filter-active' : '',
+								onClick: this.handleLiClick.bind(this, 'range', 'week') },
 							'Week'
 						),
 						React.createElement(
 							'li',
-							{ style: liStyle },
+							{ style: liStyle,
+								className: this.state.range === 'month' ? 'chart-filter-active' : '',
+								onClick: this.handleLiClick.bind(this, 'range', 'month') },
 							'Month'
 						),
 						React.createElement(
 							'li',
-							{ style: liStyle },
+							{ style: liStyle,
+								className: this.state.range === 'quater' ? 'chart-filter-active' : '',
+								onClick: this.handleLiClick.bind(this, 'range', 'quater') },
 							'Quarter'
 						)
 					)
@@ -31456,30 +31555,37 @@ var IfeChartDisplay = React.createClass({
 						{ style: ulStyle },
 						React.createElement(
 							'li',
-							{ style: liStyle },
+							{ style: liStyle,
+								className: this.state.valueType === 'peak' ? 'chart-filter-active' : '',
+								onClick: this.handleLiClick.bind(this, 'valueType', 'peak') },
 							'AQI Peak'
 						),
 						React.createElement(
 							'li',
-							{ style: liStyle },
+							{ style: liStyle,
+								className: this.state.valueType === 'average' ? 'chart-filter-active' : '',
+								onClick: this.handleLiClick.bind(this, 'valueType', 'average') },
 							'AQI Ave'
 						),
 						React.createElement(
 							'li',
-							{ style: liStyle },
+							{ style: liStyle,
+								className: this.state.valueType === 'days' ? 'chart-filter-active' : '',
+								onClick: this.handleLiClick.bind(this, 'valueType', 'days') },
 							'Days AQI < 100'
 						)
 					)
 				)
 			),
-			React.createElement('div', { id: "chart-display" })
+			React.createElement('div', { id: this.props.chartDisplayId,
+				style: chartDisplayStyle })
 		);
 	}
 });
 
 module.exports = IfeChartDisplay;
 }).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/components/IfeChartDisplay.js","/components")
-},{"../bower_components/react/react":3,"1YiZ5S":12,"buffer":9}],6:[function(require,module,exports){
+},{"../bower_components/react/react":3,"../services/Chart":8,"1YiZ5S":13,"buffer":10}],6:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -31692,7 +31798,7 @@ var IfeNav = React.createClass({
 
 module.exports = IfeNav;
 }).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/components/IfeNav.js","/components")
-},{"../bower_components/react/react":3,"1YiZ5S":12,"buffer":9}],7:[function(require,module,exports){
+},{"../bower_components/react/react":3,"1YiZ5S":13,"buffer":10}],7:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -31706,8 +31812,62 @@ Data.getAqiData().then(function (data) {
 })['catch'](function (e) {
 	console.log(e);
 });
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_7f60ae48.js","/")
-},{"./bower_components/q/q":2,"./bower_components/react/react":3,"./components/IfeChart.js":4,"./services/Data.js":8,"1YiZ5S":12,"buffer":9}],8:[function(require,module,exports){
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_b520bfc9.js","/")
+},{"./bower_components/q/q":2,"./bower_components/react/react":3,"./components/IfeChart.js":4,"./services/Data.js":9,"1YiZ5S":13,"buffer":10}],8:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+var d3 = require('../bower_components/d3/d3');
+
+exports.drawPieChart = function (id, data) {
+	d3.select('#' + id).selectAll('svg').remove();
+
+	var rect = d3.select('#' + id).node().getBoundingClientRect();
+	var width = rect.width,
+		height = rect.height;
+	var radius = Math.min(width, height) / 2;
+
+	var color = d3.scale.ordinal()
+		.range(["#9b59b6", "#3498db", "#e67e22"]);
+
+	var arc = d3.svg.arc()
+		.outerRadius(radius - 10);
+
+	var pie = d3.layout.pie()
+		.sort(null)
+		.value(function(d) { 
+			return d.days; 
+		});
+
+	var svg = d3.select('#' + id).append("svg")
+		.attr("width", width)
+		.attr("height", height)
+	.append("g")
+		.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+	var g = svg.selectAll(".arc")
+		.data(pie(data))
+		.enter().append("g")
+		.attr("class", "arc");
+
+	g.append("path")
+		.attr("d", arc)
+		.style("fill", function(d, i) { 
+			return color(i); 
+		});
+};
+
+exports.drawDonutChart = function (id, data) {
+
+};
+
+exports.drawLineChart = function (id, data) {
+	d3.select('#' + id).selectAll('svg').remove();
+};
+
+exports.drawBarChart = function (id, data) {
+	d3.select('#' + id).selectAll('svg').remove();
+};
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/services/Chart.js","/services")
+},{"../bower_components/d3/d3":1,"1YiZ5S":13,"buffer":10}],9:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 var d3 = require('../bower_components/d3/d3');
 var q = require('../bower_components/q/q');
@@ -31731,7 +31891,7 @@ module.exports = (function () {
 	};
 })();
 }).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/services/Data.js","/services")
-},{"../bower_components/d3/d3":1,"../bower_components/q/q":2,"1YiZ5S":12,"buffer":9}],9:[function(require,module,exports){
+},{"../bower_components/d3/d3":1,"../bower_components/q/q":2,"1YiZ5S":13,"buffer":10}],10:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /*!
  * The buffer module from node.js, for the browser.
@@ -32844,7 +33004,7 @@ function assert (test, message) {
 }
 
 }).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/../node_modules/gulp-browserify/node_modules/browserify/node_modules/buffer/index.js","/../node_modules/gulp-browserify/node_modules/browserify/node_modules/buffer")
-},{"1YiZ5S":12,"base64-js":10,"buffer":9,"ieee754":11}],10:[function(require,module,exports){
+},{"1YiZ5S":13,"base64-js":11,"buffer":10,"ieee754":12}],11:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 
@@ -32972,7 +33132,7 @@ var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 }(typeof exports === 'undefined' ? (this.base64js = {}) : exports))
 
 }).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/../node_modules/gulp-browserify/node_modules/browserify/node_modules/buffer/node_modules/base64-js/lib/b64.js","/../node_modules/gulp-browserify/node_modules/browserify/node_modules/buffer/node_modules/base64-js/lib")
-},{"1YiZ5S":12,"buffer":9}],11:[function(require,module,exports){
+},{"1YiZ5S":13,"buffer":10}],12:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
@@ -33060,7 +33220,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 }
 
 }).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/../node_modules/gulp-browserify/node_modules/browserify/node_modules/buffer/node_modules/ieee754/index.js","/../node_modules/gulp-browserify/node_modules/browserify/node_modules/buffer/node_modules/ieee754")
-},{"1YiZ5S":12,"buffer":9}],12:[function(require,module,exports){
+},{"1YiZ5S":13,"buffer":10}],13:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 // shim for using process in browser
 
@@ -33127,4 +33287,4 @@ process.chdir = function (dir) {
 };
 
 }).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/../node_modules/gulp-browserify/node_modules/browserify/node_modules/process/browser.js","/../node_modules/gulp-browserify/node_modules/browserify/node_modules/process")
-},{"1YiZ5S":12,"buffer":9}]},{},[7])
+},{"1YiZ5S":13,"buffer":10}]},{},[7])

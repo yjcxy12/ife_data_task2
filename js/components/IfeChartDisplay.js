@@ -1,9 +1,64 @@
 'use strict';
 
 var React = require('../bower_components/react/react');
+var Chart = require('../services/Chart');
 
 var IfeChartDisplay = React.createClass({
 	displayName: 'IfeChartDisplay',
+
+	getInitialState: function getInitialState() {
+		return {
+			city: 'beijing',
+			chartType: 'line',
+			range: 'week',
+			valueType: 'peak'
+		};
+	},
+
+	handleLiClick: function handleLiClick(type, value) {
+		var state = {};
+		state[type] = value;
+		if (type === 'chartType' && value === 'pie') {
+			state.valueType = 'days';
+		}
+		this.setState(state);
+	},
+
+	componentDidMount: function componentDidMount() {
+		this.drawChart();
+	},
+
+	componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
+		this.drawChart();
+	},
+
+	drawChart: function drawChart() {
+		var data = this.props.aqiData;
+		var state = this.state;
+		var city = this.state.city;
+		var graphData;
+
+		switch (state.chartType) {
+			case "line":
+				Chart.drawLineChart(this.props.chartDisplayId, graphData);
+				break;
+			case "bar":
+				Chart.drawBarChart(this.props.chartDisplayId, graphData);
+				break;
+			case "pie":
+				var days = data.filter(function (aqi) {
+					return aqi[city] < 100;
+				}).length;
+				graphData = [{
+					days: days
+				}, {
+					days: 365 - days
+				}];
+				Chart.drawPieChart(this.props.chartDisplayId, graphData);
+				break;
+
+		}
+	},
 
 	render: function render() {
 		var filterStyle = {
@@ -28,10 +83,14 @@ var IfeChartDisplay = React.createClass({
 			cursor: 'pointer',
 			listStyle: 'none',
 			display: 'inline',
-			margin: '5px',
 			padding: '10px',
 			WebkitUserSelect: 'none',
 			userSelect: 'none'
+		};
+		var chartDisplayStyle = {
+			height: 'calc(100% - 100px)',
+			position: 'relative',
+			width: '100%;'
 		};
 
 		return React.createElement(
@@ -53,17 +112,23 @@ var IfeChartDisplay = React.createClass({
 						{ style: ulStyle },
 						React.createElement(
 							'li',
-							{ style: liStyle },
+							{ style: liStyle,
+								className: this.state.city === 'beijing' ? 'chart-filter-active' : '',
+								onClick: this.handleLiClick.bind(this, 'city', 'beijing') },
 							'Beijing'
 						),
 						React.createElement(
 							'li',
-							{ style: liStyle },
+							{ style: liStyle,
+								className: this.state.city === 'shanghai' ? 'chart-filter-active' : '',
+								onClick: this.handleLiClick.bind(this, 'city', 'shanghai') },
 							'Shanghai'
 						),
 						React.createElement(
 							'li',
-							{ style: liStyle },
+							{ style: liStyle,
+								className: this.state.city === 'guangzhou' ? 'chart-filter-active' : '',
+								onClick: this.handleLiClick.bind(this, 'city', 'guangzhou') },
 							'Guangzhou'
 						)
 					)
@@ -81,17 +146,23 @@ var IfeChartDisplay = React.createClass({
 						{ style: ulStyle },
 						React.createElement(
 							'li',
-							{ style: liStyle },
+							{ style: liStyle,
+								className: this.state.chartType === 'line' ? 'chart-filter-active' : '',
+								onClick: this.handleLiClick.bind(this, 'chartType', 'line') },
 							'Line'
 						),
 						React.createElement(
 							'li',
-							{ style: liStyle },
-							'Block'
+							{ style: liStyle,
+								className: this.state.chartType === 'bar' ? 'chart-filter-active' : '',
+								onClick: this.handleLiClick.bind(this, 'chartType', 'bar') },
+							'Bar'
 						),
 						React.createElement(
 							'li',
-							{ style: liStyle },
+							{ style: liStyle,
+								className: this.state.chartType === 'pie' ? 'chart-filter-active' : '',
+								onClick: this.handleLiClick.bind(this, 'chartType', 'pie') },
 							'Pie'
 						)
 					)
@@ -113,17 +184,23 @@ var IfeChartDisplay = React.createClass({
 						{ style: ulStyle },
 						React.createElement(
 							'li',
-							{ style: liStyle },
+							{ style: liStyle,
+								className: this.state.range === 'week' ? 'chart-filter-active' : '',
+								onClick: this.handleLiClick.bind(this, 'range', 'week') },
 							'Week'
 						),
 						React.createElement(
 							'li',
-							{ style: liStyle },
+							{ style: liStyle,
+								className: this.state.range === 'month' ? 'chart-filter-active' : '',
+								onClick: this.handleLiClick.bind(this, 'range', 'month') },
 							'Month'
 						),
 						React.createElement(
 							'li',
-							{ style: liStyle },
+							{ style: liStyle,
+								className: this.state.range === 'quater' ? 'chart-filter-active' : '',
+								onClick: this.handleLiClick.bind(this, 'range', 'quater') },
 							'Quarter'
 						)
 					)
@@ -141,23 +218,30 @@ var IfeChartDisplay = React.createClass({
 						{ style: ulStyle },
 						React.createElement(
 							'li',
-							{ style: liStyle },
+							{ style: liStyle,
+								className: this.state.valueType === 'peak' ? 'chart-filter-active' : '',
+								onClick: this.handleLiClick.bind(this, 'valueType', 'peak') },
 							'AQI Peak'
 						),
 						React.createElement(
 							'li',
-							{ style: liStyle },
+							{ style: liStyle,
+								className: this.state.valueType === 'average' ? 'chart-filter-active' : '',
+								onClick: this.handleLiClick.bind(this, 'valueType', 'average') },
 							'AQI Ave'
 						),
 						React.createElement(
 							'li',
-							{ style: liStyle },
+							{ style: liStyle,
+								className: this.state.valueType === 'days' ? 'chart-filter-active' : '',
+								onClick: this.handleLiClick.bind(this, 'valueType', 'days') },
 							'Days AQI < 100'
 						)
 					)
 				)
 			),
-			React.createElement('div', { id: "chart-display" })
+			React.createElement('div', { id: this.props.chartDisplayId,
+				style: chartDisplayStyle })
 		);
 	}
 });
