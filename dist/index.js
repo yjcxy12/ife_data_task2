@@ -31027,308 +31027,312 @@ var IfeNav = require('./IfeNav');
 var IfeChartDisplay = require('./IfeChartDisplay');
 
 var IfeChart = React.createClass({
-	displayName: 'IfeChart',
+  displayName: 'IfeChart',
 
-	getInitialState: function getInitialState() {
-		return {
-			displayMode: 0
-		};
-	},
+  getInitialState: function getInitialState() {
+    return {
+      displayMode: 0
+    };
+  },
 
-	handleNavClick: function handleNavClick(displayMode) {
-		this.setState({
-			displayMode: displayMode
-		});
-	},
+  getChartByDisplayMode: function getChartByDisplayMode() {
+    var displayMode = this.state.displayMode;
+    var chartStyleOne = undefined;
+    var chartStyleTwo = undefined;
+    var chartStyleThree = undefined;
 
-	getChartByDisplayMode: function getChartByDisplayMode() {
-		var displayMode = this.state.displayMode;
-		var chartStyleOne, chartStyleTwo, chartStyleThree, chartStyleFour;
+    switch (displayMode) {
+      case 0:
+        chartStyleOne = {
+          backgroundColor: 'hsl(192, 15%, 94%)',
+          borderRadius: '4px',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
+          display: 'block',
+          width: 'calc(100% - 10px)',
+          height: 'calc(100% - 60px)',
+          margin: '5px',
+          verticalAlign: 'top'
+        };
 
-		switch (displayMode) {
-			case 0:
-				chartStyleOne = {
-					backgroundColor: 'hsl(192, 15%, 94%)',
-					borderRadius: '4px',
-					boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
-					display: 'block',
-					width: 'calc(100% - 10px)',
-					height: 'calc(100% - 60px)',
-					margin: '5px',
-					verticalAlign: 'top'
-				};
+        return React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+          style: chartStyleOne,
+          chartDisplayId: 'chart-display-1' });
+      case 1:
+        chartStyleOne = {
+          backgroundColor: 'hsl(192, 15%, 94%)',
+          borderRadius: '4px',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
+          display: 'inline-block',
+          width: 'calc(50% - 10px)',
+          height: 'calc(100% - 10px)',
+          margin: '5px',
+          verticalAlign: 'top'
+        };
+        chartStyleTwo = {
+          backgroundColor: 'hsl(192, 15%, 94%)',
+          borderRadius: '4px',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
+          display: 'inline-block',
+          width: 'calc(50% - 10px)',
+          height: 'calc(100% - 10px)',
+          margin: '5px 5px 5px 0',
+          verticalAlign: 'top'
+        };
+        return React.createElement(
+          'div',
+          { style: { width: '100%', height: 'calc(100% - 50px)' } },
+          React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+            style: chartStyleOne,
+            chartDisplayId: 'chart-display-1' }),
+          React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+            style: chartStyleTwo,
+            chartDisplayId: 'chart-display-2' })
+        );
+      case 2:
+        chartStyleOne = {
+          backgroundColor: 'hsl(192, 15%, 94%)',
+          borderRadius: '4px',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
+          display: 'inline-block',
+          width: 'calc(100% - 10px)',
+          height: 'calc(50% - 8px)',
+          margin: '5px',
+          verticalAlign: 'top'
+        };
+        chartStyleTwo = {
+          backgroundColor: 'hsl(192, 15%, 94%)',
+          borderRadius: '4px',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
+          display: 'inline-block',
+          width: 'calc(100% - 10px)',
+          height: 'calc(50% - 8px)',
+          margin: '0 5px 5px 5px',
+          verticalAlign: 'top'
+        };
+        return React.createElement(
+          'div',
+          { style: { width: '100%', height: 'calc(100% - 50px)' } },
+          React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+            style: chartStyleOne,
+            chartDisplayId: 'chart-display-1' }),
+          React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+            style: chartStyleTwo,
+            chartDisplayId: 'chart-display-2' })
+        );
+      case 3:
+        chartStyleOne = {
+          backgroundColor: 'hsl(192, 15%, 94%)',
+          borderRadius: '4px',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
+          display: 'inline-block',
+          width: 'calc(50% - 8px)',
+          height: 'calc(100% - 10px)',
+          margin: '5px',
+          verticalAlign: 'top'
+        };
+        chartStyleTwo = {
+          backgroundColor: 'hsl(192, 15%, 94%)',
+          borderRadius: '4px',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
+          display: 'inline-block',
+          width: '100%',
+          height: 'calc(50% - 5px)',
+          marginBottom: '5px',
+          verticalAlign: 'top'
+        };
+        chartStyleThree = {
+          backgroundColor: 'hsl(192, 15%, 94%)',
+          borderRadius: '4px',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
+          display: 'inline-block',
+          width: '100%',
+          height: 'calc(50% - 5px)',
+          verticalAlign: 'top'
+        };
+        return React.createElement(
+          'div',
+          { style: { width: '100%', height: 'calc(100% - 50px)' } },
+          React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+            style: chartStyleOne,
+            chartDisplayId: 'chart-display-1' }),
+          React.createElement(
+            'div',
+            { style: {
+                display: 'inline-block',
+                width: 'calc(50% - 8px)',
+                height: 'calc(100% - 10px)',
+                margin: '5px 5px 5px 0',
+                position: 'relative'
+              } },
+            React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+              style: chartStyleTwo,
+              chartDisplayId: 'chart-display-2' }),
+            React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+              style: chartStyleThree,
+              chartDisplayId: 'chart-display-3' })
+          )
+        );
+      case 4:
+        chartStyleOne = {
+          backgroundColor: 'hsl(192, 15%, 94%)',
+          borderRadius: '4px',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
+          display: 'inline-block',
+          width: 'calc(100% - 10px)',
+          height: 'calc(50% - 10px)',
+          margin: '5px',
+          verticalAlign: 'top'
+        };
+        chartStyleTwo = {
+          backgroundColor: 'hsl(192, 15%, 94%)',
+          borderRadius: '4px',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
+          display: 'inline-block',
+          width: 'calc(50% - 3px)',
+          height: '100%',
+          marginRight: '5px',
+          verticalAlign: 'top'
+        };
+        chartStyleThree = {
+          backgroundColor: 'hsl(192, 15%, 94%)',
+          borderRadius: '4px',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
+          display: 'inline-block',
+          width: 'calc(50% - 3px)',
+          height: '100%',
+          verticalAlign: 'top'
+        };
+        return React.createElement(
+          'div',
+          { style: { width: '100%', height: 'calc(100% - 50px)' } },
+          React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+            style: chartStyleOne,
+            chartDisplayId: 'chart-display-1' }),
+          React.createElement(
+            'div',
+            { style: {
+                display: 'inline-block',
+                width: 'calc(100% - 10px)',
+                height: 'calc(50% - 10px)',
+                margin: '0 5px 5px 5px',
+                position: 'relative'
+              } },
+            React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+              style: chartStyleTwo,
+              chartDisplayId: 'chart-display-2' }),
+            React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+              style: chartStyleThree,
+              chartDisplayId: 'chart-display-3' })
+          )
+        );
+      case 5:
+        chartStyleOne = {
+          backgroundColor: 'hsl(192, 15%, 94%)',
+          borderRadius: '4px',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
+          display: 'inline-block',
+          width: 'calc(50% - 8px)',
+          height: 'calc(100% - 10px)',
+          margin: '5px 5px 5px 0',
+          verticalAlign: 'top'
+        };
+        chartStyleTwo = {
+          backgroundColor: 'hsl(192, 15%, 94%)',
+          borderRadius: '4px',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
+          display: 'inline-block',
+          width: '100%',
+          height: 'calc(50% - 5px)',
+          marginBottom: '5px'
+        };
+        chartStyleThree = {
+          backgroundColor: 'hsl(192, 15%, 94%)',
+          borderRadius: '4px',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
+          display: 'inline-block',
+          width: '100%',
+          height: 'calc(50% - 5px)',
+          verticalAlign: 'top'
+        };
+        return React.createElement(
+          'div',
+          { style: { width: '100%', height: 'calc(100% - 50px)' } },
+          React.createElement(
+            'div',
+            { style: {
+                display: 'inline-block',
+                width: 'calc(50% - 8px)',
+                height: 'calc(100% - 10px)',
+                margin: '5px',
+                position: 'relative'
+              } },
+            React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+              style: chartStyleTwo,
+              chartDisplayId: 'chart-display-2' }),
+            React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+              style: chartStyleThree,
+              chartDisplayId: 'chart-display-3' })
+          ),
+          React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+            style: chartStyleOne,
+            chartDisplayId: 'chart-display-1' })
+        );
+      case 6:
+        chartStyleOne = {
+          backgroundColor: 'hsl(192, 15%, 94%)',
+          borderRadius: '4px',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
+          display: 'inline-block',
+          width: 'calc(50% - 8px)',
+          height: 'calc(50% - 10px)',
+          margin: '3px',
+          verticalAlign: 'top'
+        };
+        return React.createElement(
+          'div',
+          { style: { width: '100%', height: 'calc(100% - 50px)' } },
+          React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+            style: chartStyleOne,
+            chartDisplayId: 'chart-display-1' }),
+          React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+            style: chartStyleOne,
+            chartDisplayId: 'chart-display-2' }),
+          React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+            style: chartStyleOne,
+            chartDisplayId: 'chart-display-3' }),
+          React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+            style: chartStyleOne,
+            chartDisplayId: 'chart-display-4' })
+        );
+      default:
+        break;
+    }
+  },
 
-				return React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-					style: chartStyleOne,
-					chartDisplayId: "chart-display-1" });
-			case 1:
-				chartStyleOne = {
-					backgroundColor: 'hsl(192, 15%, 94%)',
-					borderRadius: '4px',
-					boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
-					display: 'inline-block',
-					width: 'calc(50% - 10px)',
-					height: 'calc(100% - 10px)',
-					margin: '5px',
-					verticalAlign: 'top'
-				};
-				chartStyleTwo = {
-					backgroundColor: 'hsl(192, 15%, 94%)',
-					borderRadius: '4px',
-					boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
-					display: 'inline-block',
-					width: 'calc(50% - 10px)',
-					height: 'calc(100% - 10px)',
-					margin: '5px 5px 5px 0',
-					verticalAlign: 'top'
-				};
-				return React.createElement(
-					'div',
-					{ style: { width: '100%', height: 'calc(100% - 50px)' } },
-					React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-						style: chartStyleOne,
-						chartDisplayId: "chart-display-1" }),
-					React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-						style: chartStyleTwo,
-						chartDisplayId: "chart-display-2" })
-				);
-			case 2:
-				chartStyleOne = {
-					backgroundColor: 'hsl(192, 15%, 94%)',
-					borderRadius: '4px',
-					boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
-					display: 'inline-block',
-					width: 'calc(100% - 10px)',
-					height: 'calc(50% - 8px)',
-					margin: '5px',
-					verticalAlign: 'top'
-				};
-				chartStyleTwo = {
-					backgroundColor: 'hsl(192, 15%, 94%)',
-					borderRadius: '4px',
-					boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
-					display: 'inline-block',
-					width: 'calc(100% - 10px)',
-					height: 'calc(50% - 8px)',
-					margin: '0 5px 5px 5px',
-					verticalAlign: 'top'
-				};
-				return React.createElement(
-					'div',
-					{ style: { width: '100%', height: 'calc(100% - 50px)' } },
-					React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-						style: chartStyleOne,
-						chartDisplayId: "chart-display-1" }),
-					React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-						style: chartStyleTwo,
-						chartDisplayId: "chart-display-2" })
-				);
-			case 3:
-				chartStyleOne = {
-					backgroundColor: 'hsl(192, 15%, 94%)',
-					borderRadius: '4px',
-					boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
-					display: 'inline-block',
-					width: 'calc(50% - 8px)',
-					height: 'calc(100% - 10px)',
-					margin: '5px',
-					verticalAlign: 'top'
-				};
-				chartStyleTwo = {
-					backgroundColor: 'hsl(192, 15%, 94%)',
-					borderRadius: '4px',
-					boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
-					display: 'inline-block',
-					width: '100%',
-					height: 'calc(50% - 5px)',
-					marginBottom: '5px',
-					verticalAlign: 'top'
-				};
-				chartStyleThree = {
-					backgroundColor: 'hsl(192, 15%, 94%)',
-					borderRadius: '4px',
-					boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
-					display: 'inline-block',
-					width: '100%',
-					height: 'calc(50% - 5px)',
-					verticalAlign: 'top'
-				};
-				return React.createElement(
-					'div',
-					{ style: { width: '100%', height: 'calc(100% - 50px)' } },
-					React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-						style: chartStyleOne,
-						chartDisplayId: "chart-display-1" }),
-					React.createElement(
-						'div',
-						{ style: {
-								display: 'inline-block',
-								width: 'calc(50% - 8px)',
-								height: 'calc(100% - 10px)',
-								margin: '5px 5px 5px 0',
-								position: 'relative'
-							} },
-						React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-							style: chartStyleTwo,
-							chartDisplayId: "chart-display-2" }),
-						React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-							style: chartStyleThree,
-							chartDisplayId: "chart-display-3" })
-					)
-				);
-			case 4:
-				chartStyleOne = {
-					backgroundColor: 'hsl(192, 15%, 94%)',
-					borderRadius: '4px',
-					boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
-					display: 'inline-block',
-					width: 'calc(100% - 10px)',
-					height: 'calc(50% - 10px)',
-					margin: '5px',
-					verticalAlign: 'top'
-				};
-				chartStyleTwo = {
-					backgroundColor: 'hsl(192, 15%, 94%)',
-					borderRadius: '4px',
-					boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
-					display: 'inline-block',
-					width: 'calc(50% - 3px)',
-					height: '100%',
-					marginRight: '5px',
-					verticalAlign: 'top'
-				};
-				chartStyleThree = {
-					backgroundColor: 'hsl(192, 15%, 94%)',
-					borderRadius: '4px',
-					boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
-					display: 'inline-block',
-					width: 'calc(50% - 3px)',
-					height: '100%',
-					verticalAlign: 'top'
-				};
-				return React.createElement(
-					'div',
-					{ style: { width: '100%', height: 'calc(100% - 50px)' } },
-					React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-						style: chartStyleOne,
-						chartDisplayId: "chart-display-1" }),
-					React.createElement(
-						'div',
-						{ style: {
-								display: 'inline-block',
-								width: 'calc(100% - 10px)',
-								height: 'calc(50% - 10px)',
-								margin: '0 5px 5px 5px',
-								position: 'relative'
-							} },
-						React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-							style: chartStyleTwo,
-							chartDisplayId: "chart-display-2" }),
-						React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-							style: chartStyleThree,
-							chartDisplayId: "chart-display-3" })
-					)
-				);
-			case 5:
-				chartStyleOne = {
-					backgroundColor: 'hsl(192, 15%, 94%)',
-					borderRadius: '4px',
-					boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
-					display: 'inline-block',
-					width: 'calc(50% - 8px)',
-					height: 'calc(100% - 10px)',
-					margin: '5px 5px 5px 0',
-					verticalAlign: 'top'
-				};
-				chartStyleTwo = {
-					backgroundColor: 'hsl(192, 15%, 94%)',
-					borderRadius: '4px',
-					boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
-					display: 'inline-block',
-					width: '100%',
-					height: 'calc(50% - 5px)',
-					marginBottom: '5px'
-				};
-				chartStyleThree = {
-					backgroundColor: 'hsl(192, 15%, 94%)',
-					borderRadius: '4px',
-					boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
-					display: 'inline-block',
-					width: '100%',
-					height: 'calc(50% - 5px)',
-					verticalAlign: 'top'
-				};
-				return React.createElement(
-					'div',
-					{ style: { width: '100%', height: 'calc(100% - 50px)' } },
-					React.createElement(
-						'div',
-						{ style: {
-								display: 'inline-block',
-								width: 'calc(50% - 8px)',
-								height: 'calc(100% - 10px)',
-								margin: '5px',
-								position: 'relative'
-							} },
-						React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-							style: chartStyleTwo,
-							chartDisplayId: "chart-display-2" }),
-						React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-							style: chartStyleThree,
-							chartDisplayId: "chart-display-3" })
-					),
-					React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-						style: chartStyleOne,
-						chartDisplayId: "chart-display-1" })
-				);
-			case 6:
-				chartStyleOne = {
-					backgroundColor: 'hsl(192, 15%, 94%)',
-					borderRadius: '4px',
-					boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
-					display: 'inline-block',
-					width: 'calc(50% - 8px)',
-					height: 'calc(50% - 10px)',
-					margin: '3px',
-					verticalAlign: 'top'
-				};
-				return React.createElement(
-					'div',
-					{ style: { width: '100%', height: 'calc(100% - 50px)' } },
-					React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-						style: chartStyleOne,
-						chartDisplayId: "chart-display-1" }),
-					React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-						style: chartStyleOne,
-						chartDisplayId: "chart-display-2" }),
-					React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-						style: chartStyleOne,
-						chartDisplayId: "chart-display-3" }),
-					React.createElement(IfeChartDisplay, { aqiData: this.props.data,
-						style: chartStyleOne,
-						chartDisplayId: "chart-display-4" })
-				);
-		}
-	},
+  handleNavClick: function handleNavClick(displayMode) {
+    this.setState({
+      displayMode: displayMode
+    });
+  },
 
-	render: function render() {
-		var topStyle = {
-			margin: '0',
-			padding: '0',
-			width: '100%',
-			height: '100%',
-			position: 'relative'
-		};
-		var charts = this.getChartByDisplayMode();
+  render: function render() {
+    var topStyle = {
+      margin: '0',
+      padding: '0',
+      width: '100%',
+      height: '100%',
+      position: 'relative'
+    };
+    var charts = this.getChartByDisplayMode();
 
-		return React.createElement(
-			'div',
-			{ style: topStyle },
-			React.createElement(IfeNav, { handleNavClick: this.handleNavClick.bind(this),
-				displayMode: this.state.displayMode }),
-			charts
-		);
-	}
+    return React.createElement(
+      'div',
+      { style: topStyle },
+      React.createElement(IfeNav, { handleNavClick: this.handleNavClick.bind(this),
+        displayMode: this.state.displayMode }),
+      charts
+    );
+  }
 });
 
 module.exports = IfeChart;
@@ -31341,246 +31345,247 @@ var React = require('../bower_components/react/react');
 var Chart = require('../services/Chart');
 
 var IfeChartDisplay = React.createClass({
-	displayName: 'IfeChartDisplay',
+  displayName: 'IfeChartDisplay',
 
-	getInitialState: function getInitialState() {
-		return {
-			city: 'beijing',
-			chartType: 'line',
-			range: 'week',
-			valueType: 'peak'
-		};
-	},
+  getInitialState: function getInitialState() {
+    return {
+      city: 'beijing',
+      chartType: 'line',
+      range: 'week',
+      valueType: 'peak'
+    };
+  },
 
-	handleLiClick: function handleLiClick(type, value) {
-		var state = {};
-		state[type] = value;
-		if (type === 'chartType' && value === 'pie') {
-			state.valueType = 'days';
-		}
-		this.setState(state);
-	},
+  componentDidMount: function componentDidMount() {
+    this.drawChart();
+  },
 
-	componentDidMount: function componentDidMount() {
-		this.drawChart();
-	},
+  componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
+    this.drawChart();
+  },
 
-	componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
-		this.drawChart();
-	},
+  handleLiClick: function handleLiClick(type, value) {
+    var state = {};
+    state[type] = value;
+    if (type === 'chartType' && value === 'pie') {
+      state.valueType = 'days';
+    }
+    this.setState(state);
+  },
 
-	drawChart: function drawChart() {
-		var data = this.props.aqiData;
-		var state = this.state;
-		var city = this.state.city;
-		var graphData;
+  drawChart: function drawChart() {
+    var data = this.props.aqiData;
+    var state = this.state;
+    var city = this.state.city;
+    var graphData = undefined;
 
-		switch (state.chartType) {
-			case "line":
-				Chart.drawLineChart(this.props.chartDisplayId, graphData);
-				break;
-			case "bar":
-				Chart.drawBarChart(this.props.chartDisplayId, graphData);
-				break;
-			case "pie":
-				var days = data.filter(function (aqi) {
-					return aqi[city] < 100;
-				}).length;
-				graphData = [{
-					days: days
-				}, {
-					days: 365 - days
-				}];
-				Chart.drawPieChart(this.props.chartDisplayId, graphData);
-				break;
+    switch (state.chartType) {
+      case 'line':
+        Chart.drawLineChart(this.props.chartDisplayId, graphData);
+        break;
+      case 'bar':
+        Chart.drawBarChart(this.props.chartDisplayId, graphData);
+        break;
+      case 'pie':
+        var days = data.filter(function (aqi) {
+          return aqi[city] < 100;
+        }).length;
+        graphData = [{
+          days: days
+        }, {
+          days: 365 - days
+        }];
+        Chart.drawPieChart(this.props.chartDisplayId, graphData);
+        break;
+      default:
+        break;
+    }
+  },
 
-		}
-	},
+  render: function render() {
+    var filterStyle = {
+      backgroundColor: 'hsl(192, 15%, 80%)',
+      fontFamily: '"Trebuchet MS", Helvetica, sans-serif',
+      fontSize: '12px',
+      position: 'relative',
+      width: '100%'
+    };
+    var labelStyle = {
+      display: 'inline-block',
+      width: '10%'
+    };
+    var ulStyle = {
+      paddingLeft: '20px',
+      display: 'inline-block',
+      width: '80%'
+    };
+    var liStyle = {
+      backgroundColor: 'hsl(192, 15%, 90%)',
+      borderRadius: '2px',
+      cursor: 'pointer',
+      listStyle: 'none',
+      display: 'inline',
+      padding: '10px',
+      WebkitUserSelect: 'none',
+      userSelect: 'none'
+    };
+    var chartDisplayStyle = {
+      height: 'calc(100% - 100px)',
+      position: 'relative',
+      width: '100%;'
+    };
 
-	render: function render() {
-		var filterStyle = {
-			backgroundColor: 'hsl(192, 15%, 80%)',
-			fontFamily: '"Trebuchet MS", Helvetica, sans-serif',
-			fontSize: '12px',
-			position: 'relative',
-			width: '100%'
-		};
-		var labelStyle = {
-			display: 'inline-block',
-			width: '10%'
-		};
-		var ulStyle = {
-			paddingLeft: '20px',
-			display: 'inline-block',
-			width: '80%'
-		};
-		var liStyle = {
-			backgroundColor: 'hsl(192, 15%, 90%)',
-			borderRadius: '2px',
-			cursor: 'pointer',
-			listStyle: 'none',
-			display: 'inline',
-			padding: '10px',
-			WebkitUserSelect: 'none',
-			userSelect: 'none'
-		};
-		var chartDisplayStyle = {
-			height: 'calc(100% - 100px)',
-			position: 'relative',
-			width: '100%;'
-		};
-
-		return React.createElement(
-			'div',
-			{ style: this.props.style },
-			React.createElement(
-				'div',
-				{ style: filterStyle },
-				React.createElement(
-					'div',
-					{ style: { display: 'inline-block', width: '50%' } },
-					React.createElement(
-						'label',
-						{ style: labelStyle },
-						'City'
-					),
-					React.createElement(
-						'ul',
-						{ style: ulStyle },
-						React.createElement(
-							'li',
-							{ style: liStyle,
-								className: this.state.city === 'beijing' ? 'chart-filter-active' : '',
-								onClick: this.handleLiClick.bind(this, 'city', 'beijing') },
-							'Beijing'
-						),
-						React.createElement(
-							'li',
-							{ style: liStyle,
-								className: this.state.city === 'shanghai' ? 'chart-filter-active' : '',
-								onClick: this.handleLiClick.bind(this, 'city', 'shanghai') },
-							'Shanghai'
-						),
-						React.createElement(
-							'li',
-							{ style: liStyle,
-								className: this.state.city === 'guangzhou' ? 'chart-filter-active' : '',
-								onClick: this.handleLiClick.bind(this, 'city', 'guangzhou') },
-							'Guangzhou'
-						)
-					)
-				),
-				React.createElement(
-					'div',
-					{ style: { display: 'inline-block', width: '50%' } },
-					React.createElement(
-						'label',
-						{ style: labelStyle },
-						'Chart Type'
-					),
-					React.createElement(
-						'ul',
-						{ style: ulStyle },
-						React.createElement(
-							'li',
-							{ style: liStyle,
-								className: this.state.chartType === 'line' ? 'chart-filter-active' : '',
-								onClick: this.handleLiClick.bind(this, 'chartType', 'line') },
-							'Line'
-						),
-						React.createElement(
-							'li',
-							{ style: liStyle,
-								className: this.state.chartType === 'bar' ? 'chart-filter-active' : '',
-								onClick: this.handleLiClick.bind(this, 'chartType', 'bar') },
-							'Bar'
-						),
-						React.createElement(
-							'li',
-							{ style: liStyle,
-								className: this.state.chartType === 'pie' ? 'chart-filter-active' : '',
-								onClick: this.handleLiClick.bind(this, 'chartType', 'pie') },
-							'Pie'
-						)
-					)
-				)
-			),
-			React.createElement(
-				'div',
-				{ style: filterStyle },
-				React.createElement(
-					'div',
-					{ style: { display: 'inline-block', width: '50%' } },
-					React.createElement(
-						'label',
-						{ style: labelStyle },
-						'Range'
-					),
-					React.createElement(
-						'ul',
-						{ style: ulStyle },
-						React.createElement(
-							'li',
-							{ style: liStyle,
-								className: this.state.range === 'week' ? 'chart-filter-active' : '',
-								onClick: this.handleLiClick.bind(this, 'range', 'week') },
-							'Week'
-						),
-						React.createElement(
-							'li',
-							{ style: liStyle,
-								className: this.state.range === 'month' ? 'chart-filter-active' : '',
-								onClick: this.handleLiClick.bind(this, 'range', 'month') },
-							'Month'
-						),
-						React.createElement(
-							'li',
-							{ style: liStyle,
-								className: this.state.range === 'quater' ? 'chart-filter-active' : '',
-								onClick: this.handleLiClick.bind(this, 'range', 'quater') },
-							'Quarter'
-						)
-					)
-				),
-				React.createElement(
-					'div',
-					{ style: { display: 'inline-block', width: '50%' } },
-					React.createElement(
-						'label',
-						{ style: labelStyle },
-						'Y-axis Value'
-					),
-					React.createElement(
-						'ul',
-						{ style: ulStyle },
-						React.createElement(
-							'li',
-							{ style: liStyle,
-								className: this.state.valueType === 'peak' ? 'chart-filter-active' : '',
-								onClick: this.handleLiClick.bind(this, 'valueType', 'peak') },
-							'AQI Peak'
-						),
-						React.createElement(
-							'li',
-							{ style: liStyle,
-								className: this.state.valueType === 'average' ? 'chart-filter-active' : '',
-								onClick: this.handleLiClick.bind(this, 'valueType', 'average') },
-							'AQI Ave'
-						),
-						React.createElement(
-							'li',
-							{ style: liStyle,
-								className: this.state.valueType === 'days' ? 'chart-filter-active' : '',
-								onClick: this.handleLiClick.bind(this, 'valueType', 'days') },
-							'Days AQI < 100'
-						)
-					)
-				)
-			),
-			React.createElement('div', { id: this.props.chartDisplayId,
-				style: chartDisplayStyle })
-		);
-	}
+    return React.createElement(
+      'div',
+      { style: this.props.style },
+      React.createElement(
+        'div',
+        { style: filterStyle },
+        React.createElement(
+          'div',
+          { style: { display: 'inline-block', width: '50%' } },
+          React.createElement(
+            'label',
+            { style: labelStyle },
+            'City'
+          ),
+          React.createElement(
+            'ul',
+            { style: ulStyle },
+            React.createElement(
+              'li',
+              { style: liStyle,
+                className: this.state.city === 'beijing' ? 'chart-filter-active' : '',
+                onClick: this.handleLiClick.bind(this, 'city', 'beijing') },
+              'Beijing'
+            ),
+            React.createElement(
+              'li',
+              { style: liStyle,
+                className: this.state.city === 'shanghai' ? 'chart-filter-active' : '',
+                onClick: this.handleLiClick.bind(this, 'city', 'shanghai') },
+              'Shanghai'
+            ),
+            React.createElement(
+              'li',
+              { style: liStyle,
+                className: this.state.city === 'guangzhou' ? 'chart-filter-active' : '',
+                onClick: this.handleLiClick.bind(this, 'city', 'guangzhou') },
+              'Guangzhou'
+            )
+          )
+        ),
+        React.createElement(
+          'div',
+          { style: { display: 'inline-block', width: '50%' } },
+          React.createElement(
+            'label',
+            { style: labelStyle },
+            'Chart Type'
+          ),
+          React.createElement(
+            'ul',
+            { style: ulStyle },
+            React.createElement(
+              'li',
+              { style: liStyle,
+                className: this.state.chartType === 'line' ? 'chart-filter-active' : '',
+                onClick: this.handleLiClick.bind(this, 'chartType', 'line') },
+              'Line'
+            ),
+            React.createElement(
+              'li',
+              { style: liStyle,
+                className: this.state.chartType === 'bar' ? 'chart-filter-active' : '',
+                onClick: this.handleLiClick.bind(this, 'chartType', 'bar') },
+              'Bar'
+            ),
+            React.createElement(
+              'li',
+              { style: liStyle,
+                className: this.state.chartType === 'pie' ? 'chart-filter-active' : '',
+                onClick: this.handleLiClick.bind(this, 'chartType', 'pie') },
+              'Pie'
+            )
+          )
+        )
+      ),
+      React.createElement(
+        'div',
+        { style: filterStyle },
+        React.createElement(
+          'div',
+          { style: { display: 'inline-block', width: '50%' } },
+          React.createElement(
+            'label',
+            { style: labelStyle },
+            'Range'
+          ),
+          React.createElement(
+            'ul',
+            { style: ulStyle },
+            React.createElement(
+              'li',
+              { style: liStyle,
+                className: this.state.range === 'week' ? 'chart-filter-active' : '',
+                onClick: this.handleLiClick.bind(this, 'range', 'week') },
+              'Week'
+            ),
+            React.createElement(
+              'li',
+              { style: liStyle,
+                className: this.state.range === 'month' ? 'chart-filter-active' : '',
+                onClick: this.handleLiClick.bind(this, 'range', 'month') },
+              'Month'
+            ),
+            React.createElement(
+              'li',
+              { style: liStyle,
+                className: this.state.range === 'quater' ? 'chart-filter-active' : '',
+                onClick: this.handleLiClick.bind(this, 'range', 'quater') },
+              'Quarter'
+            )
+          )
+        ),
+        React.createElement(
+          'div',
+          { style: { display: 'inline-block', width: '50%' } },
+          React.createElement(
+            'label',
+            { style: labelStyle },
+            'Y-axis Value'
+          ),
+          React.createElement(
+            'ul',
+            { style: ulStyle },
+            React.createElement(
+              'li',
+              { style: liStyle,
+                className: this.state.valueType === 'peak' ? 'chart-filter-active' : '',
+                onClick: this.handleLiClick.bind(this, 'valueType', 'peak') },
+              'AQI Peak'
+            ),
+            React.createElement(
+              'li',
+              { style: liStyle,
+                className: this.state.valueType === 'average' ? 'chart-filter-active' : '',
+                onClick: this.handleLiClick.bind(this, 'valueType', 'average') },
+              'AQI Ave'
+            ),
+            React.createElement(
+              'li',
+              { style: liStyle,
+                className: this.state.valueType === 'days' ? 'chart-filter-active' : '',
+                onClick: this.handleLiClick.bind(this, 'valueType', 'days') },
+              'Days AQI < 100'
+            )
+          )
+        )
+      ),
+      React.createElement('div', { id: this.props.chartDisplayId,
+        style: chartDisplayStyle })
+    );
+  }
 });
 
 module.exports = IfeChartDisplay;
@@ -31803,17 +31808,16 @@ module.exports = IfeNav;
 'use strict';
 
 var React = require('./bower_components/react/react');
-var q = require('./bower_components/q/q');
 var IfeChart = require('./components/IfeChart.js');
 var Data = require('./services/Data.js');
 
 Data.getAqiData().then(function (data) {
-	React.render(React.createElement(IfeChart, { data: data }), document.body);
+  React.render(React.createElement(IfeChart, { data: data }), document.body);
 })['catch'](function (e) {
-	console.log(e);
+  console.log(e);
 });
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_b520bfc9.js","/")
-},{"./bower_components/q/q":2,"./bower_components/react/react":3,"./components/IfeChart.js":4,"./services/Data.js":9,"1YiZ5S":13,"buffer":10}],8:[function(require,module,exports){
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_4eab78ca.js","/")
+},{"./bower_components/react/react":3,"./components/IfeChart.js":4,"./services/Data.js":9,"1YiZ5S":13,"buffer":10}],8:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 var d3 = require('../bower_components/d3/d3');
 

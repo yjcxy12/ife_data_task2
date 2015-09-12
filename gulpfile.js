@@ -1,31 +1,30 @@
-var gulp = require("gulp");
-var gutil = require("gulp-util");
-var babel = require("gulp-babel");
-var browserify = require('gulp-browserify');
+const gulp = require('gulp');
+const babel = require('gulp-babel');
+const browserify = require('gulp-browserify');
 
 function handleError(err) {
   console.log(err.toString());
   this.emit('end');
 }
 
-gulp.task('browserify', ['babel'], function() {
-    gulp.src('js/index.js')
+gulp.task('browserify', ['babel'], () => {
+    gulp.src('babel/index.js')
       .pipe(browserify({
-        insertGlobals : true
+        insertGlobals: true
       }))
       .on('error', handleError)
       .pipe(gulp.dest('./dist'));
-});
+  });
 
-gulp.task("babel", function () {
-  return gulp.src(["js/**/*.jsx"])
+gulp.task('babel', () => {
+  return gulp.src(['js/**/*.jsx'])
     .pipe(babel())
     .on('error', handleError)
-    .pipe(gulp.dest("js"));
+    .pipe(gulp.dest('babel'));
 });
 
-gulp.task("watch", function () {
-	gulp.watch('js/components/*.jsx', ['browserify']);
+gulp.task('watch', () => {
+  gulp.watch('js/components/*.jsx', ['browserify']);
   gulp.watch('js/services/*.js', ['browserify']);
   gulp.watch('js/index.jsx', ['browserify']);
 });

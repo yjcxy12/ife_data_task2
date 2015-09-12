@@ -1,19 +1,23 @@
-const React = require('../bower_components/react/react');
-const IfeNav = require('./IfeNav');
-const IfeChartDisplay = require('./IfeChartDisplay');
+'use strict';
 
-const IfeChart = React.createClass({
-  getInitialState() {
+var React = require('../bower_components/react/react');
+var IfeNav = require('./IfeNav');
+var IfeChartDisplay = require('./IfeChartDisplay');
+
+var IfeChart = React.createClass({
+  displayName: 'IfeChart',
+
+  getInitialState: function getInitialState() {
     return {
       displayMode: 0
     };
   },
 
-  getChartByDisplayMode() {
-    const displayMode = this.state.displayMode;
-    let chartStyleOne;
-    let chartStyleTwo;
-    let chartStyleThree;
+  getChartByDisplayMode: function getChartByDisplayMode() {
+    var displayMode = this.state.displayMode;
+    var chartStyleOne = undefined;
+    var chartStyleTwo = undefined;
+    var chartStyleThree = undefined;
 
     switch (displayMode) {
       case 0:
@@ -28,9 +32,9 @@ const IfeChart = React.createClass({
           verticalAlign: 'top'
         };
 
-        return (<IfeChartDisplay aqiData={this.props.data}
-          style={chartStyleOne}
-          chartDisplayId="chart-display-1" />);
+        return React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+          style: chartStyleOne,
+          chartDisplayId: 'chart-display-1' });
       case 1:
         chartStyleOne = {
           backgroundColor: 'hsl(192, 15%, 94%)',
@@ -52,15 +56,15 @@ const IfeChart = React.createClass({
           margin: '5px 5px 5px 0',
           verticalAlign: 'top'
         };
-        return (
-          <div style={{width: '100%', height: 'calc(100% - 50px)'}}>
-            <IfeChartDisplay aqiData={this.props.data}
-              style={chartStyleOne}
-              chartDisplayId="chart-display-1" />
-            <IfeChartDisplay aqiData={this.props.data}
-              style={chartStyleTwo}
-              chartDisplayId="chart-display-2" />
-          </div>
+        return React.createElement(
+          'div',
+          { style: { width: '100%', height: 'calc(100% - 50px)' } },
+          React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+            style: chartStyleOne,
+            chartDisplayId: 'chart-display-1' }),
+          React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+            style: chartStyleTwo,
+            chartDisplayId: 'chart-display-2' })
         );
       case 2:
         chartStyleOne = {
@@ -83,15 +87,15 @@ const IfeChart = React.createClass({
           margin: '0 5px 5px 5px',
           verticalAlign: 'top'
         };
-        return (
-          <div style={{width: '100%', height: 'calc(100% - 50px)'}}>
-            <IfeChartDisplay aqiData={this.props.data}
-              style={chartStyleOne}
-              chartDisplayId="chart-display-1" />
-            <IfeChartDisplay aqiData={this.props.data}
-              style={chartStyleTwo}
-              chartDisplayId="chart-display-2" />
-          </div>
+        return React.createElement(
+          'div',
+          { style: { width: '100%', height: 'calc(100% - 50px)' } },
+          React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+            style: chartStyleOne,
+            chartDisplayId: 'chart-display-1' }),
+          React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+            style: chartStyleTwo,
+            chartDisplayId: 'chart-display-2' })
         );
       case 3:
         chartStyleOne = {
@@ -123,26 +127,28 @@ const IfeChart = React.createClass({
           height: 'calc(50% - 5px)',
           verticalAlign: 'top'
         };
-        return (
-          <div style={{width: '100%', height: 'calc(100% - 50px)'}}>
-            <IfeChartDisplay aqiData={this.props.data}
-              style={chartStyleOne}
-              chartDisplayId="chart-display-1" />
-            <div style={{
-              display: 'inline-block', 
-              width: 'calc(50% - 8px)', 
-              height: 'calc(100% - 10px)',
-              margin: '5px 5px 5px 0',
-              position: 'relative'
-            }}>
-              <IfeChartDisplay aqiData={this.props.data}
-                style={chartStyleTwo}
-                chartDisplayId="chart-display-2" />
-              <IfeChartDisplay aqiData={this.props.data}
-                style={chartStyleThree}
-                chartDisplayId="chart-display-3" />
-            </div>
-          </div>
+        return React.createElement(
+          'div',
+          { style: { width: '100%', height: 'calc(100% - 50px)' } },
+          React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+            style: chartStyleOne,
+            chartDisplayId: 'chart-display-1' }),
+          React.createElement(
+            'div',
+            { style: {
+                display: 'inline-block',
+                width: 'calc(50% - 8px)',
+                height: 'calc(100% - 10px)',
+                margin: '5px 5px 5px 0',
+                position: 'relative'
+              } },
+            React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+              style: chartStyleTwo,
+              chartDisplayId: 'chart-display-2' }),
+            React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+              style: chartStyleThree,
+              chartDisplayId: 'chart-display-3' })
+          )
         );
       case 4:
         chartStyleOne = {
@@ -174,26 +180,28 @@ const IfeChart = React.createClass({
           height: '100%',
           verticalAlign: 'top'
         };
-        return (
-          <div style={{width: '100%', height: 'calc(100% - 50px)'}}>
-            <IfeChartDisplay aqiData={this.props.data}
-              style={chartStyleOne}
-              chartDisplayId="chart-display-1" />
-            <div style={{
-              display: 'inline-block', 
-              width: 'calc(100% - 10px)', 
-              height: 'calc(50% - 10px)',
-              margin: '0 5px 5px 5px',
-              position: 'relative'
-            }}>
-              <IfeChartDisplay aqiData={this.props.data}
-                style={chartStyleTwo}
-                chartDisplayId="chart-display-2" />
-              <IfeChartDisplay aqiData={this.props.data}
-                style={chartStyleThree}
-                chartDisplayId="chart-display-3" />
-            </div>
-          </div>
+        return React.createElement(
+          'div',
+          { style: { width: '100%', height: 'calc(100% - 50px)' } },
+          React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+            style: chartStyleOne,
+            chartDisplayId: 'chart-display-1' }),
+          React.createElement(
+            'div',
+            { style: {
+                display: 'inline-block',
+                width: 'calc(100% - 10px)',
+                height: 'calc(50% - 10px)',
+                margin: '0 5px 5px 5px',
+                position: 'relative'
+              } },
+            React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+              style: chartStyleTwo,
+              chartDisplayId: 'chart-display-2' }),
+            React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+              style: chartStyleThree,
+              chartDisplayId: 'chart-display-3' })
+          )
         );
       case 5:
         chartStyleOne = {
@@ -224,26 +232,28 @@ const IfeChart = React.createClass({
           height: 'calc(50% - 5px)',
           verticalAlign: 'top'
         };
-        return (
-          <div style={{width: '100%', height: 'calc(100% - 50px)'}}>
-            <div style={{
-              display: 'inline-block', 
-              width: 'calc(50% - 8px)', 
-              height: 'calc(100% - 10px)',
-              margin: '5px',
-              position: 'relative'
-            }}>
-              <IfeChartDisplay aqiData={this.props.data}
-                style={chartStyleTwo}
-                chartDisplayId="chart-display-2" />
-              <IfeChartDisplay aqiData={this.props.data}
-                style={chartStyleThree}
-                chartDisplayId="chart-display-3" />
-            </div>
-            <IfeChartDisplay aqiData={this.props.data}
-              style={chartStyleOne}
-              chartDisplayId="chart-display-1" />
-          </div>
+        return React.createElement(
+          'div',
+          { style: { width: '100%', height: 'calc(100% - 50px)' } },
+          React.createElement(
+            'div',
+            { style: {
+                display: 'inline-block',
+                width: 'calc(50% - 8px)',
+                height: 'calc(100% - 10px)',
+                margin: '5px',
+                position: 'relative'
+              } },
+            React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+              style: chartStyleTwo,
+              chartDisplayId: 'chart-display-2' }),
+            React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+              style: chartStyleThree,
+              chartDisplayId: 'chart-display-3' })
+          ),
+          React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+            style: chartStyleOne,
+            chartDisplayId: 'chart-display-1' })
         );
       case 6:
         chartStyleOne = {
@@ -256,50 +266,49 @@ const IfeChart = React.createClass({
           margin: '3px',
           verticalAlign: 'top'
         };
-        return (
-          <div style={{width: '100%', height: 'calc(100% - 50px)'}}>
-            <IfeChartDisplay aqiData={this.props.data}
-              style={chartStyleOne}
-              chartDisplayId="chart-display-1" />
-            <IfeChartDisplay aqiData={this.props.data}
-              style={chartStyleOne}
-              chartDisplayId="chart-display-2" />
-            <IfeChartDisplay aqiData={this.props.data}
-              style={chartStyleOne}
-              chartDisplayId="chart-display-3" />
-            <IfeChartDisplay aqiData={this.props.data}
-              style={chartStyleOne}
-              chartDisplayId="chart-display-4" />
-          </div>
+        return React.createElement(
+          'div',
+          { style: { width: '100%', height: 'calc(100% - 50px)' } },
+          React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+            style: chartStyleOne,
+            chartDisplayId: 'chart-display-1' }),
+          React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+            style: chartStyleOne,
+            chartDisplayId: 'chart-display-2' }),
+          React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+            style: chartStyleOne,
+            chartDisplayId: 'chart-display-3' }),
+          React.createElement(IfeChartDisplay, { aqiData: this.props.data,
+            style: chartStyleOne,
+            chartDisplayId: 'chart-display-4' })
         );
       default:
         break;
     }
   },
 
-  handleNavClick(displayMode) {
+  handleNavClick: function handleNavClick(displayMode) {
     this.setState({
       displayMode: displayMode
     });
   },
 
-  render() {
-    const topStyle = {
+  render: function render() {
+    var topStyle = {
       margin: '0',
       padding: '0',
       width: '100%',
       height: '100%',
       position: 'relative'
     };
-    const charts = this.getChartByDisplayMode();
+    var charts = this.getChartByDisplayMode();
 
-    return (
-      <div style={topStyle}>
-        <IfeNav handleNavClick={this.handleNavClick.bind(this)}
-          displayMode={this.state.displayMode}/>
-
-        {charts}
-      </div>
+    return React.createElement(
+      'div',
+      { style: topStyle },
+      React.createElement(IfeNav, { handleNavClick: this.handleNavClick.bind(this),
+        displayMode: this.state.displayMode }),
+      charts
     );
   }
 });

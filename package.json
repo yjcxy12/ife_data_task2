@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/yjcxy12/ife_data_task2#readme",
   "devDependencies": {
+    "babel-eslint": "^4.1.1",
+    "eslint": "^1.4.1",
+    "eslint-config-airbnb": "0.0.8",
+    "eslint-plugin-react": "^3.3.2",
     "gulp": "^3.9.0",
     "gulp-babel": "^5.1.0",
     "gulp-browserify": "^0.5.1",
